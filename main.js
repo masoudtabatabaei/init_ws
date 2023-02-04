@@ -1,12 +1,12 @@
 
 const stopSendData = document.getElementById("stop");
-const resumeSendData = document.getElementById("resume");
+// const resumeSendData = document.getElementById("resume");
 const contentSection = document.getElementById("content");
 const statusText = document.getElementById("status_text");
 
 document.addEventListener("DOMContentLoaded", function() {
     const ws = new WebSocket("ws://localhost:8082");
-    
+
     ws.addEventListener("open", () => {
         console.log("I'm connected");
         statusText.innerText = "Receiving data...";
@@ -16,9 +16,9 @@ document.addEventListener("DOMContentLoaded", function() {
         ws.send("stop");
     })
     
-    resumeSendData.addEventListener("click", () => {
-        ws.send("resume");
-    });
+    // resumeSendData.addEventListener("click", () => {
+    //     ws.send("resume");
+    // });
     
     ws.addEventListener("message", ({data}) => {
         const dataObj = JSON.parse(data);
